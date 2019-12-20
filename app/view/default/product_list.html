@@ -1,0 +1,31 @@
+<% include  ./public/header.html%>
+<% include  ./public/banner.html%>
+<!--end header -->
+	<!-- start banner_y -->
+	<!-- end banner -->
+
+	<!-- start danpin -->
+		<div class="danpin center">
+			<div class="biaoti center">类型名称-xxxx</div>
+			<div class="main center">
+				<%for(var i=0;i<goodsList.length;i++){%>
+					<div class="mingxing fl mb20" style="border:2px solid #fff;width:230px;cursor:pointer;" onmouseout="this.style.border='2px solid #fff'" onmousemove="this.style.border='2px solid #f60'">
+						<div class="sub_mingxing">
+							
+							<a href="/pinfo?id=<%=goodsList[i]._id%>" target="_blank"><img src="<%=goodsList[i].goods_img%>" alt="" /></a>
+						
+						</div>
+						<div class="pinpai"><a href="./xiangqing.html" target="_blank"><%=goodsList[i].title%></a></div>
+						
+						<div class="jiage"><%=goodsList[i].shop_price%>元</div>
+						<div class="youhui">优惠开始</div>
+					</div>
+				<%}%>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<% include ./public/footer.html%>
+	<!-- end danpin -->
+	</body>
+</html>

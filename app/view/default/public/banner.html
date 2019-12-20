@@ -1,0 +1,83 @@
+<div class="banner_x center">
+    <a href="/" target=""><div class="logo fl"></div></a>
+   
+    <div class="nav fl">
+        <ul class="clearfix" id="nav_list">
+            <li class="link-category"><a href="#">全部商品分类</a>
+            
+                <div class="banner_y center">
+                    <div class="nav">				
+                        <ul>
+                        <%for(var i=0;i<goodsCate.length;i++){ %>
+                            <li>
+                                <a href="/plist?cid=<%=goodsCate[i]._id%>"><%=goodsCate[i].title%></a>
+                                <div class="pop">
+                                    <ol class="cate_list clear">
+                                        <%for(var j=0;j<goodsCate[i].items.length;j++){ %>
+                                        <li>
+                                            <%if(goodsCate[i].items[j].link){%>
+                                            <div class="xuangou_left">
+                                                <a href="<%=goodsCate[i].items[j].link%>">
+                                                    <div class="img fl"><img src="<%=goodsCate[i].items[j].cate_img%>" alt="<%=goodsCate[i].items[j].title%>"></div>
+                                                    <span class="fl"><%=goodsCate[i].items[j].price%></span>	
+                                                </a>
+                                            </div>
+
+                                            <%}else{%>
+                                                <div class="xuangou_left">
+                                                    <a href="/plist?cid=<%=goodsCate[i].items[j]._id%>">
+
+                                                    <div class="img fl"><img src="<%=goodsCate[i].items[j].cate_img%>" alt="<%=goodsCate[i].items[j].title%>"></div>
+                                                    <span class="fl"><%=goodsCate[i].items[j].title%></span>		
+                                                    </a>
+                                                </div>
+
+                                            <%}%>
+                                        </li>
+                                        <%}%>
+                                    </ol>
+                                </div>
+                            </li>
+                            <%}%>
+                        </ul>
+                    </div>
+                </div> 
+            </li>
+
+            <%for(var i=0;i<middleNav.length;i++){ %>						
+                <li>
+                    <a href="#" target="_blank"><%=middleNav[i].title%></a>
+                    <%if(middleNav[i].subGoods.length>0) {%>
+                        <ol class="children-list clearfix">
+                            <%for(var j=0;j<middleNav[i].subGoods.length;j++){ %>
+                                <li>
+                                    <a href="#">
+                                       <img style="width:80px;height:100px" src="<%=middleNav[i].subGoods[j].goods_img%>" />
+											<p style="font-size: 15px;"><%=middleNav[i].subGoods[j].title%></p>
+											<br/>
+											<p style="font-size: 13px;"><%=middleNav[i].subGoods[j].shop_price%></p>
+                                    </a>
+                                </li>		
+                            <%}%>
+                        </ol>
+
+                    <%}%>
+                
+                </li>
+
+            <%} %>
+        </ul>
+    </div>
+    <div class="search fr">
+        <form action="" method="post">
+            <div class="text fl">
+                <input type="text" class="shuru"  placeholder="请输入产品">
+            </div>
+            <div class="submit fl">
+                <input type="submit" class="sousuo" value="搜索"/>
+            </div>
+            <div class="clear"></div>
+        </form>
+        <div class="clear"></div>
+    </div>
+</div>

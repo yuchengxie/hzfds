@@ -1,0 +1,148 @@
+<% include  ./public/header.html%>
+<!--end header -->
+
+<!-- start banner_x -->
+<% include  ./public/banner.html%>
+<!-- end banner_x -->
+
+	
+	<!-- xiangqing -->
+
+
+	
+	<div class="jieshao mt20 w">
+		<div class="left fl">
+			<div class="swiper-container">
+				<!-- 左侧轮播商品相册 -->
+				<div class="swiper-wrapper" id="swiper-wrapper">
+					<%for(var i=0;i<goodsImageResult.length;i++){%>
+						<div class="swiper-slide">
+								<img style="height: 560px;width: 560px;" src="<%=goodsImageResult[i].img_url%>">
+						</div>
+					<%}%>
+				</div>
+				<div class="swiper-pagination"></div>
+
+				<!-- Add Arrows -->
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+		
+			</div>
+		
+		
+		
+		</div>
+		<div class="right fr">
+			<div class="h3 ml20 mt20"><%=productInfo.title%></div>
+			<div class="jianjie mr40 ml20 mt10"><%=productInfo.sub_title%></div>
+			<div class="jiage ml20 mt10"><%=productInfo.shop_price%>元</div>
+			<%if(relationGoods.length>0){%>
+				<div class="ft20 ml20 mt20">选择版本</div>
+				<div class="xzbb ml20 mt10 clearfix">
+
+					<%for(var i=0;i<relationGoods.length;i++){%>
+						<div class="banben fl <%if(productInfo._id.toString()==relationGoods[i]._id.toString()){%>active <%}%>" >
+							<a href="/pinfo?id=<%=relationGoods[i]._id%>">
+								<span><%=relationGoods[i].goods_version%></span>
+								<span><%=relationGoods[i].shop_price%>元</span>
+							</a>
+						</div>
+					<%}%>
+				</div>
+			<%}%>
+
+			<%if(goodsColor.length>0){%>
+
+				<div class="ft20 ml20 mt20 clear" style="margin-top:85px">选择颜色</div>
+				<div class="xzbb ml20 mt10 clearfix" id="color_list">
+					
+						<%for(var i=0;i<goodsColor.length;i++){%>
+						<div class="banben fl <%if(i==0){%>active<%}%>" goods_id="<%=productInfo._id%>" color_id="<%=goodsColor[i]._id%>">
+							<a>
+								<span class="yuandian" style="background:<%=goodsColor[i].color_value%>"></span>
+								<span class="yanse"><%=goodsColor[i].color_name%></span>
+							</a>
+						</div>
+						<%}%>
+				</div>
+
+			<%}%>
+			<div class="xqxq mt20 ml20 clear">
+				<div class="top1 mt10">
+					<div class="left1 fl"><%=productInfo.title%></div>
+					<div class="right1 fr"><%=productInfo.shop_price%>元</div>
+					<div class="clear"></div>
+				</div>
+				<div class="bot mt20 ft20 ftbc">总计：<%=productInfo.shop_price%>元</div>
+			</div>
+			<div class="xiadan ml20 mt20">					
+					<input class="jrgwc" type="button" name="addCart" id="addCart" value="加入购物车" />
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+
+	<div class="container clearfix">
+
+
+		<div class="c_left">
+			<h2>看了又看</h2>
+			<div class="item">	
+				<a target="_blank" href="#">
+					<img src="//img10.360buyimg.com/N1/jfs/t24550/324/210570328/559386/cc08975f/5b2910bbNfaceb0b4.jpg" />
+					<p class="price recommendLookPrice4183081">￥31.90</p>
+					<!-- <p>三利 纯棉A类标准简约素雅大浴巾 70×140cm 男女同款 柔软舒适吸水裹身巾 豆绿</p> -->
+					<p>商品简介</p>
+				</a>
+			</div>
+		</div>
+
+		<div class="c_right">
+			<ul class="detail_list clearfix">			
+				<li class="">详情描述</li>			
+				<li class="">规格参数</li>
+				<li class="">用户评价</li>
+			</ul>
+			<div class="detail_info">
+				<div class="detail_info_item">
+					<%-productInfo.goods_content%>
+				</div>
+				<div class="detail_info_item">
+					<ul>
+						<%for(var i=0;i<goodsAttr.length;i++){%>
+						<li class="row clearfix">
+							<div class="span5">
+								<h2><%=goodsAttr[i].attribute_title%></h2>
+							</div>
+							<div class="span15">
+								<%=goodsAttr[i].attribute_value%>
+							</div>
+						</li>
+						<%}%>
+					</ul>
+				</div>
+
+				<div class="detail_info_item">
+					<ul class="comment_list">
+						<li>
+							<div>
+									<!-- <img src="//static.i360mall.com/mall/images/eval-stars.png"> -->
+							</div>
+							<p>
+								1111
+							</p>
+							
+							<p class="eval-order-info"> 
+									<span class="eval-time">2018-11-18 14:00:35</span><span>aaaa</span><span>xxxxx</span><span></span>
+								</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- footer -->
+	<% include ./public/footer.html%>
+</html>
